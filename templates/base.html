@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}自动化营销平台{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">首页</a>
+        <a href="/customers">客户管理</a>
+        <a href="/templates">话术管理</a>
+        <a href="/commands">指令中心</a>
+        <a href="/messages">消息记录</a>
+        <a href="/commandlogs">指令日志</a>
+        <a href="/report">数据简报</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

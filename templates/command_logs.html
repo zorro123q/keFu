@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}指令日志 - 自动化营销平台{% endblock %}
+
+{% block content %}
+<h1>指令日志</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>指令内容</th>
+            <th>解析结果</th>
+            <th>状态</th>
+            <th>结果</th>
+            <th>耗时 (s)</th>
+            <th>时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.id }}</td>
+            <td>{{ log.command_content }}</td>
+            <td>{{ log.standardized_command or '' }}</td>
+            <td>{{ log.status }}</td>
+            <td>{{ log.result or log.error or '' }}</td>
+            <td>{{ log.duration or '' }}</td>
+            <td>{{ log.time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

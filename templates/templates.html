@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}话术管理 - 自动化营销平台{% endblock %}
+
+{% block content %}
+<h1>话术管理</h1>
+<div>
+    <a href="/templates/add">添加话术模板</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>内容</th>
+            <th>类型</th>
+            <th>场景</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in templates %}
+        <tr>
+            <td>{{ t.id }}</td>
+            <td>{{ t.name }}</td>
+            <td>{{ t.content[:50] }}{% if t.content|length > 50 %}...{% endif %}</td>
+            <td>{{ t.type or '' }}</td>
+            <td>{{ t.scene or '' }}</td>
+            <td>{{ '启用' if t.is_active else '停用' }}</td>
+            <td class="actions">
+                <a href="/templates/edit/{{ t.id }}">编辑</a>
+                <form method="post" action="/templates/delete/{{ t.id }}" style="display:inline;" onsubmit="return confirm('确定删除?');">
+                    <button type="submit">删除</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

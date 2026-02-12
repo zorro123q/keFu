@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 自动化营销平台{% endblock %}
+
+{% block content %}
+<h1>营销概览</h1>
+<p>欢迎使用自动化营销平台。本系统帮助您管理客户信息、生成话术模板、发送消息并跟踪营销效果。</p>
+
+<div class="dashboard">
+    <p><strong>客户总数：</strong>{{ total_customers }}</p>
+    <p><strong>话术模板数：</strong>{{ total_templates }}</p>
+    <p><strong>发送消息总数：</strong>{{ total_messages }}</p>
+    {% if last_command %}
+    <p><strong>最近指令：</strong>{{ last_command.command_content }}（状态：{{ last_command.status }}）</p>
+    {% else %}
+    <p><strong>最近指令：</strong>暂无</p>
+    {% endif %}
+</div>
+
+<p>使用导航栏访问不同功能模块。</p>
+{% endblock %}

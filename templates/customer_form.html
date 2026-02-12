@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% if customer %}
+    {% set page_title = '编辑客户' %}
+{% else %}
+    {% set page_title = '添加客户' %}
+{% endif %}
+
+{% block title %}{{ page_title }} - 自动化营销平台{% endblock %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+<form method="post" action="{% if customer %}/customers/edit/{{ customer.id }}{% else %}/customers/add{% endif %}">
+    <div class="form-group">
+        <label>姓名：</label>
+        <input type="text" name="name" value="{{ customer.name if customer else '' }}">
+    </div>
+    <div class="form-group">
+        <label>电话：</label>
+        <input type="text" name="phone" value="{{ customer.phone if customer else '' }}">
+    </div>
+    <div class="form-group">
+        <label>微信：</label>
+        <input type="text" name="wechat" value="{{ customer.wechat if customer else '' }}">
+    </div>
+    <div class="form-group">
+        <label>QQ：</label>
+        <input type="text" name="qq" value="{{ customer.qq if customer else '' }}">
+    </div>
+    <div class="form-group">
+        <label>公司：</label>
+        <input type="text" name="company" value="{{ customer.company if customer else '' }}">
+    </div>
+    <div class="form-group">
+        <label>职位：</label>
+        <input type="text" name="position" value="{{ customer.position if customer else '' }}">
+    </div>
+    <div class="form-group">
+        <label>行业：</label>
+        <input type="text" name="industry" value="{{ customer.industry if customer else '' }}">
+    </div>
+    <div class="form-group">
+        <label>地区：</label>
+        <input type="text" name="region" value="{{ customer.region if customer else '' }}">
+    </div>
+    <div class="form-group">
+        <label>渠道：</label>
+        <input type="text" name="channel" value="{{ customer.channel if customer else '' }}">
+    </div>
+    {% if customer %}
+    <div class="form-group">
+        <label>添加状态：</label>
+        <select name="add_status">
+            <option value="未添加" {% if customer.add_status=='未添加' %}selected{% endif %}>未添加</option>
+            <option value="已添加" {% if customer.add_status=='已添加' %}selected{% endif %}>已添加</option>
+        </select>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label>意向度：</label>
+        <select name="intention">
+            {% set intention_val = customer.intention if customer else '无' %}
+            <option value="高" {% if intention_val=='高' %}selected{% endif %}>高</option>
+            <option value="中" {% if intention_val=='中' %}selected{% endif %}>中</option>
+            <option value="低" {% if intention_val=='低' %}selected{% endif %}>低</option>
+            <option value="无" {% if intention_val=='无' %}selected{% endif %}>无</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>备注：</label>
+        <textarea name="remarks">{{ customer.remarks if customer else '' }}</textarea>
+    </div>
+    <button type="submit">保存</button>
+</form>
+{% endblock %}

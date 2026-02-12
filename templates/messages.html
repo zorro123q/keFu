@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}消息记录 - 自动化营销平台{% endblock %}
+
+{% block content %}
+<h1>消息记录</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>客户ID</th>
+            <th>发送时间</th>
+            <th>发送类型</th>
+            <th>内容</th>
+            <th>状态</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for m in messages %}
+        <tr>
+            <td>{{ m.id }}</td>
+            <td>{{ m.customer_id }}</td>
+            <td>{{ m.send_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            <td>{{ m.send_type }}</td>
+            <td>{{ m.message_content }}</td>
+            <td>{{ m.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

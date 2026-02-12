@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}数据简报 - 自动化营销平台{% endblock %}
+
+{% block content %}
+<h1>数据简报</h1>
+<p><strong>客户总数：</strong>{{ total_customers }}</p>
+<p><strong>已添加好友数：</strong>{{ added_customers }}</p>
+<p><strong>发送消息数：</strong>{{ total_messages }}</p>
+
+<h2>行业分布</h2>
+<table>
+    <thead>
+        <tr>
+            <th>行业</th>
+            <th>客户数量</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ind, count in industry_counts %}
+        <tr>
+            <td>{{ ind }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
