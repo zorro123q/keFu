@@ -1,0 +1,9 @@
+{
+  "name": "bootstrapAdmin",
+  "version": "1.0.0",
+  "description": "初始化管理员（仅在 admins 为空时生效）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

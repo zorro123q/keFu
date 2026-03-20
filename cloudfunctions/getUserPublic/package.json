@@ -1,0 +1,9 @@
+{
+  "name": "getUserPublic",
+  "version": "1.0.0",
+  "description": "返回用户公用信息（脱敏）与最高证书",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}
